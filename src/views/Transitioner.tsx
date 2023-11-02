@@ -246,6 +246,7 @@ class Transitioner extends React.Component<Props, State> {
         // @ts-ignore
         const positionHasChanged = position.__getValue() !== toValue;
         if (indexHasChanged && positionHasChanged) {
+          console.log("$$$ we here")
           timing(position, {
             ...transitionSpec,
             toValue: nextProps.navigation.state.index,
@@ -256,7 +257,7 @@ class Transitioner extends React.Component<Props, State> {
             requestAnimationFrame(this.handleTransitionEnd);
           });
         } else {
-          this.handleTransitionEnd();
+          requestAnimationFrame(this.handleTransitionEnd);
         }
       });
     }
