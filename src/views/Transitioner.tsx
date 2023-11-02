@@ -328,7 +328,10 @@ class Transitioner extends React.Component<Props, State> {
       if (this.queuedTransition) {
         let { prevProps } = this.queuedTransition;
         this.queuedTransition = null;
-        this.startTransition(prevProps, this.props);
+        requestAnimationFrame(() => {
+          console.log('$$$ run on next animation frame');
+          this.startTransition(prevProps, this.props);
+        });
       } else {
         this.isTransitionRunning = false;
       }
